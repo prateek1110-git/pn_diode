@@ -41,7 +41,7 @@ def predict():
         'input': data1,
         'output': output
     })
-
+    session['history'] = session['history'][-10:]
     return render_template("web.html", prediction_text="The predicted Output Current (in Amperes) is {} A".format(output), history=session['history'])
 
 @app.route('/clear', methods=['POST'])
