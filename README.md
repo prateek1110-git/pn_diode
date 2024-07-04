@@ -83,11 +83,3 @@ This project aims to predict the output current of a p-n junction diode based on
 
 The machine learning model used in this project is a Support Vector Regression (SVR) model. It was trained using a dataset of PN Junction Diode characteristics. The input features include doping concentrations, temperature, carrier lifetimes, and bias voltage.
 
-## Contributing
-
-If you would like to contribute to this project, please fork the repository and submit a pull request.
-
-## Acknowledgements
-
-Thanks to all the open-source contributors and the Flask, Pandas, NumPy, and Scikit-Learn communities.
-
