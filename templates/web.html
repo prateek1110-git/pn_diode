@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+ <div class="login">
+  <h1>PN Junction Diode Output Current Prediction</h1>
+
+  <!-- Main Input For Receiving Query to our ML -->
+  <form action="{{ url_for('predict') }}" method="post">
+    <input type="text" name="n_doping" placeholder="n_doping(cm⁻³)" required="required" /><br>
+    <input type="text" name="p_doping" placeholder="p_doping(cm⁻³)" required="required" /><br>
+    <input type="text" name="Temp" placeholder="Temperature (K)" required="required" /><br>
+    <input type="text" name="tpe" placeholder="Electron Carrier Lifetime (s⁻¹)" required="required" /><br>
+    <input type="text" name="tph" placeholder="Hole Carrier Lifetime(s⁻¹)" required="required" /><br>
+    <input type="text" name="vin" placeholder="Bias Voltage (V)" required="required" /><br>
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+  </form>
+
+  <br><br>
+  <div>
+    {{ prediction_text|safe }}
+  </div>
+
+  <!-- Display previous inputs and outputs -->
+  <h2>Previous Predictions</h2>
+  <ul>
+    {% for entry in history %}
+      <li>
+        Input: n_doping = {{ entry.input[0] }} cm⁻³, p_doping = {{ entry.input[1] }} cm⁻³, Temp = {{ entry.input[2] }} K, tpe = {{ entry.input[3] }} s⁻¹, tph = {{ entry.input[4] }} s⁻¹, vin = {{ entry.input[5] }} V<br>
+        Output: {{ '{:.2e}'.format(entry.output) }} A
+      </li>
+    {% endfor %}
+  </ul>
+
+  <!-- Button to clear the history -->
+  <form action="{{ url_for('clear') }}" method="post">
+    <button type="submit" class="btn btn-primary btn-block btn-large">Clear History</button>
+  </form>
+ </div>
+</body>
+</html>
