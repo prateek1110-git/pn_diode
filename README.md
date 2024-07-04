@@ -8,7 +8,7 @@ This project aims to predict the output current of a p-n junction diode based on
 - `SVR_model.ipynb`: Jupyter Notebook used for training the Support Vector Regression (SVR) model.
 - `requirements.txt`: Contains all the required libraries
 - `app.py`: The main Flask application file that handles the web server and prediction logic.
-- `web.html`: HTML template for the web interface.
+- `web.html`: HTML & CSS template for the web interface.
 
 ## Setup and Installation
 
@@ -73,7 +73,7 @@ This project aims to predict the output current of a p-n junction diode based on
   - Data preprocessing, model training, and evaluation steps.
 
 - **`web.html`:**
-  - HTML template for the web interface.
+  - HTML & CSS template for the web interface.
   - Form for input parameters.
   - Displays the predicted output current.
   - Shows the history of previous predictions.
